@@ -208,20 +208,20 @@ void update7SEG (int index){
 			break;
 	}
 }
-//int clock7Seg = 50;
-//int clockBlink = 100;
-//void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef * htim){
-//	clock7Seg--;
-//	clockBlink--;
-//	if (clock7Seg <= 0) {
-//		update7SEG(index_led++);
-//		clock7Seg = 50;
-//	}
-//	if (clockBlink <= 0){
-//		HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
-//		clockBlink = 100;
-//	}
-//}
+int clock7Seg = 25;
+int clockBlink = 100;
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef * htim){
+	clock7Seg--;
+	clockBlink--;
+	if (clock7Seg <= 0) {
+		update7SEG(index_led++);
+		clock7Seg = 25;
+	}
+	if (clockBlink <= 0){
+		HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
+		clockBlink = 100;
+	}
+}
 /////
 
 /////ex4
@@ -229,47 +229,48 @@ void update7SEG (int index){
 /////
 
 /////ex5 need ex3
-int hour = 1,
-	minute = 2,
-	second = 3;
+int hour,
+	minute,
+	second;
 void updateClockBuffer(){
 	led_buffer[0] = hour / 10;
 	led_buffer[1] = hour % 10;
 	led_buffer[2] = minute / 10;
 	led_buffer[3] = minute % 10;
 }
+
 /////
 
 /////ex6,7,8 need ex3,5 function
-int timer0_counter = 0;
-int timer0_flag = 0;
-int timer1_counter = 0;
-int timer1_flag = 0;
-int TIMER_CYCLE = 10;
-void setTimer0(int duration) {
-	timer0_counter = duration / TIMER_CYCLE;
-	timer0_flag = 0;
-}
-void setTimer1(int duration) {
-	timer1_counter = duration / TIMER_CYCLE;
-	timer1_flag = 0;
-}
-void timer0_run() {
-	if (timer0_counter > 0) {
-		timer0_counter--;
-		if (timer0_counter == 0) timer0_flag = 1;
-	}
-}
-void timer1_run() {
-	if (timer1_counter > 0) {
-		timer1_counter--;
-		if (timer1_counter == 0) timer1_flag = 1;
-	}
-}
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef * htim){
-	timer0_run();
-	timer1_run();
-}
+//int timer0_counter = 0;
+//int timer0_flag = 0;
+//int timer1_counter = 0;
+//int timer1_flag = 0;
+//int TIMER_CYCLE = 10;
+//void setTimer0(int duration) {
+//	timer0_counter = duration / TIMER_CYCLE;
+//	timer0_flag = 0;
+//}
+//void setTimer1(int duration) {
+//	timer1_counter = duration / TIMER_CYCLE;
+//	timer1_flag = 0;
+//}
+//void timer0_run() {
+//	if (timer0_counter > 0) {
+//		timer0_counter--;
+//		if (timer0_counter == 0) timer0_flag = 1;
+//	}
+//}
+//void timer1_run() {
+//	if (timer1_counter > 0) {
+//		timer1_counter--;
+//		if (timer1_counter == 0) timer1_flag = 1;
+//	}
+//}
+//void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef * htim){
+//	timer0_run();
+//	timer1_run();
+//}
 /////
 
 #endif /* SRC_EX1_8_H_ */

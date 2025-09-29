@@ -80,50 +80,56 @@ int main(void)
 //////
 
 /////enable for ex5
-//  while (1) {
-//	  second++;
-//	  if (second >= 60) {
-//		  second = 0;
-//		  minute++;
-//	  }
-//	  if (minute >= 60) {
-//		  minute = 0;
-//		  hour++;
-//	  }
-//	  if (hour >= 24) {
-//		  hour = 0;
-//	  }
-//	  updateClockBuffer();
-//	  HAL_Delay(1000);
-//  }
+  hour = 1,
+  minute = 2,
+  second = 59;
+  updateClockBuffer();
+  while (1) {
+	  HAL_Delay(1000);
+	  if (second >= 60) {
+		  second = 0;
+		  minute++;
+	  }
+	  if (minute >= 60) {
+		  minute = 0;
+		  hour++;
+	  }
+	  if (hour >= 24) {
+		  hour = 0;
+	  }
+	  second++;
+	  updateClockBuffer();
+  }
 /////
 
-  setTimer0(1000);
-  setTimer1(1000);
-  while (1) {
- 	  if (timer0_flag == 1){
- 		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
- 		  second++;
- 		  if (second >= 60) {
- 			  second = 0;
- 			  minute++;
- 	  	  }
- 	  	  if (minute >= 60) {
- 	  		  minute = 0;
- 	  		  hour++;
- 	  	  }
- 	  	  if (hour >= 24) {
- 	  		  hour = 0;
- 	  	  }
- 	  	  setTimer0(100);
- 	  }
-
- 	  if (timer1_flag == 1) {
- 		  update7SEG(index_led++);
- 		  setTimer1(100);
- 	  }
- 	  updateClockBuffer();
-   }
+/////enable for ex7,8
+//  setTimer0(1000);
+//  setTimer1(1000);
+//  while (1) {
+// 	  if (timer0_flag == 1){
+// 		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
+// 		  second++;
+// 		  if (second >= 60) {
+// 			  second = 0;
+// 			  minute++;
+// 	  	  }
+// 	  	  if (minute >= 60) {
+// 	  		  minute = 0;
+// 	  		  hour++;
+// 	  	  }
+// 	  	  if (hour >= 24) {
+// 	  		  hour = 0;
+// 	  	  }
+// 	  	  setTimer0(100);
+// 	  }
+//
+// 	  if (timer1_flag == 1) {
+// 		  update7SEG(index_led++);
+// 		  setTimer1(100);
+// 	  }
+// 	  updateClockBuffer();
+//   }
+/////
 }
 
 /**
