@@ -1,0 +1,5 @@
+timer.c:21:6:setTimer_TrafficLight	16	static
+timer.c:26:6:setTimer_7seg_scan	16	static
+timer.c:31:6:setTimer_Blink	16	static
+timer.c:36:6:timer_run	4	static
+timer.c:59:6:HAL_TIM_PeriodElapsedCallback	16	static
