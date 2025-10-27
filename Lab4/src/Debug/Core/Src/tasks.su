@@ -1,0 +1,6 @@
+tasks.c:12:6:Task1	8	static
+tasks.c:16:6:Task2	8	static
+tasks.c:20:6:Task3	8	static
+tasks.c:24:6:Task4	8	static
+tasks.c:28:6:Task5	8	static
+tasks.c:32:6:Timer_10ms	8	static
